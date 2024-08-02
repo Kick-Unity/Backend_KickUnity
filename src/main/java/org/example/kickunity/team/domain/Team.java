@@ -3,6 +3,7 @@ package org.example.kickunity.team.domain;
 import jakarta.persistence.*;
 import org.example.kickunity.global.entity.BaseEntity;
 
+@Entity
 public class Team extends BaseEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +12,6 @@ public class Team extends BaseEntity {
 
     private String name;
 
-    private String score;
+    private int score;
 
 }
