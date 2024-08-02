@@ -1,9 +1,7 @@
 package org.example.kickunity.user.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
 import org.example.kickunity.global.entity.BaseEntity;
 
 
@@ -12,30 +10,36 @@ import java.util.Objects;
 @Entity
 public class User extends BaseEntity {
 
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
+    @Getter
     private String email;
+
+    private String name;
+
+    // 비밀번호 추가 필요
+    private String psw;
+
+    private String phone;
+
+    private int score = 0;
+
+    private Long team_id = null;
+
 
     protected User() {
     }
 
-    public User(final String email) {
-        this(null, email);
+    public User(final String email, String psw) {
+        this(null, email, psw);
     }
-
-    public User(final Long id, final String email) {
+    public User(final Long id, final String email, String psw) {
         this.id = id;
         this.email = email;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
+        this.psw = psw;
     }
 
     @Override
